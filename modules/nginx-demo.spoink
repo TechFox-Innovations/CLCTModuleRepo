@@ -1,0 +1,11 @@
+tasks:
+  - command: echo "Running pre-install commands for {profile} version {version}"
+  - install_package: nginx
+  - enable_service: nginx
+  - configure_firewall:
+      - "{profile}_port/tcp"
+      - "443/tcp"
+  - prompt: "Enter the domain for the website: "
+    parameter: "domain"
+  - udf: custom_udf
+  - command: echo "Running post-install commands for {profile} with domain {domain}"
