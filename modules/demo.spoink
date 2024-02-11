@@ -1,0 +1,52 @@
+tasks:
+  - command: echo "Running the Sample Module"
+  - install_package: vim
+  - configure_firewall:
+      - "8080/tcp"
+      - "9000/tcp"
+  - prompt: "Enter the database password: "
+    parameter: "db_password"
+  - udf: configure_network
+    interface: eth0
+    ip_address: 192.168.1.10
+    netmask: 255.255.255.0
+  - udf: restart_service
+    service: apache2
+  - udf: create_directory
+    directory: /opt/myapp
+  - udf: delete_file
+    file_path: /tmp/temp_file.txt
+  - udf: run_script
+    script_path: /path/to/myscript.sh
+  - udf: set_hostname
+    hostname: myserver
+  - udf: add_user_to_group
+    username: john
+    groupname: developers
+  - udf: install_deb_package
+    package_path: /path/to/my_package.deb
+  - udf: start_service
+    service: nginx
+  - udf: stop_service
+    service: apache2
+  - udf: reload_service
+    service: nginx
+  - udf: enable_autostart
+    service: mysql
+  - udf: disable_autostart
+    service: postfix
+  - udf: add_ssh_key
+    user: john
+    ssh_key_path: /path/to/id_rsa.pub
+  - udf: add_sudo_user
+    username: jane
+  - udf: configure_cron_job
+    cron_job: "0 * * * * root /path/to/my_script.sh"
+  - udf: install_from_source
+    source_url: https://github.com/example/repo.git
+    destination_path: /opt/myapp
+  - udf: set_timezone
+    timezone: America/New_York
+  - udf: set_locale
+    locale: en_US.UTF-8
+  - command: echo "Sample Module completed"
