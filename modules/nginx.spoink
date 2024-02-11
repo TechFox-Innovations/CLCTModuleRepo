@@ -1,0 +1,7 @@
+tasks:
+  - command: echo "Deploying Nginx"
+  - install_package: nginx
+  - enable_service: nginx
+  - configure_firewall:
+      - "80/tcp"
+  - command: echo "Nginx deployment completed!"
